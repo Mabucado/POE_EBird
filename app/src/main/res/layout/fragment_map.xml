@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3F3F3"
+    tools:context=".Map">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <com.mapbox.maps.MapView
+            android:id="@+id/mapView"
+            android:layout_width="412dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@+id/zoonInButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
+            app:mapbox_cameraBearing="0.0"
+            app:mapbox_cameraPitch="0.0"
+            app:mapbox_cameraTargetLat="-25.85"
+            app:mapbox_cameraTargetLng="28.16"
+            app:mapbox_cameraZoom="2.0">
+
+        </com.mapbox.maps.MapView>
+
+        <Button
+            android:id="@+id/btnDirections"
+            android:layout_width="50dp"
+            android:layout_height="47dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:text="D"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="@+id/zoomOutButton"
+            app:layout_constraintStart_toEndOf="@+id/zoomOutButton"
+            app:layout_constraintTop_toTopOf="@+id/zoomOutButton" />
+
+        <Button
+            android:id="@+id/zoonInButton"
+            android:layout_width="50dp"
+            android:layout_height="47dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:text="+"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/zoomOutButton"
+            android:layout_width="50dp"
+            android:layout_height="47dp"
+            android:background="#FFFFFF"
+            android:text="-"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="@+id/zoonInButton"
+            app:layout_constraintStart_toEndOf="@+id/zoonInButton"
+            app:layout_constraintTop_toTopOf="@+id/zoonInButton" />
+
+        <include
+            layout="@layout/direction_card_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btnSave"
+            android:layout_width="50dp"
+            android:layout_height="47dp"
+            android:background="#FFFFFF"
+            android:text="S"
+            android:textSize="34sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnDirections"
+            app:layout_constraintStart_toEndOf="@+id/btnDirections"
+            app:layout_constraintTop_toTopOf="@+id/btnDirections" />
+
+        <Button
+            android:id="@+id/btnHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#FFFFFF"
+            android:backgroundTint="#FFFFFF"
+            android:text="Home"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnSave"
+            app:layout_constraintStart_toEndOf="@+id/btnSave"
+            app:layout_constraintTop_toTopOf="@+id/btnSave" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

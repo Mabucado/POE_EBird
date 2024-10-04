@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "860461792970",
+    "project_id": "dulcet-basis-433312-r7",
+    "storage_bucket": "dulcet-basis-433312-r7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:860461792970:android:12349963e147b0a4f7fe33",
+        "android_client_info": {
+          "package_name": "com.ebookfrenzy.poe_ebird"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD5N1XiLgLH6xbc68RUfCMfUU6VtCIWcZE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
