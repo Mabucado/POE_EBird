@@ -78,6 +78,10 @@ class Slider : Fragment() {
             fragTrans.replace(R.id.frameLayout,frag)
             fragTrans.commit()
         }
+        settings.setOnClickListener {
+            val settingsFragment = SettingsFragment()
+            settingsFragment.show(requireFragmentManager(), "SettingsFragment")
+        }
 
 
         // Gesture detector for handling swipes

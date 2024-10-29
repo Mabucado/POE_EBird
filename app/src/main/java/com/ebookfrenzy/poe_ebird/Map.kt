@@ -342,7 +342,7 @@ class Map : Fragment() {
 
                 }
 
-
+                saveModelDataToFirestore(model)
             } else {
                 Toast.makeText(this.context, "No location has been set", Toast.LENGTH_SHORT)
                     .show()
@@ -423,9 +423,10 @@ class Map : Fragment() {
             .withPoint(point)
             .withIconImage("default-marker")
             .withIconSize(0.75) // Adjust the size as needed
-
-        // Add the annotation to the map
-        currentMarker = pointAnnotationManager.create(pointAnnotationOptions)
+        if (::pointAnnotationManager.isInitialized) {
+            // Add the annotation to the map
+            currentMarker = pointAnnotationManager.create(pointAnnotationOptions)
+        }
         mapView.getMapboxMap().getStyle { style ->
             if (style.getLayer("line-layer-id") != null) {
                 style.removeStyleLayer("line-layer-id")  // Remove the existing line layer
@@ -593,15 +594,25 @@ class Map : Fragment() {
                         // Extract the total distance and duration
                         val totalDistanceMeters = route.distance() // Distance in meters
                         val totalDurationSeconds = route.duration() // Duration in seconds
+                        if(model.usersList.find { it.username==model.loggedInUser }!!.unit=="metric"||model.usersList.find { it.username==model.loggedInUser }!!.unit==null) {
+                            Log.i("unit",model.usersList.find { it.username==model.loggedInUser }!!.unit.toString())
+                            // Convert distance to kilometers and duration to minutes
+                            val totalDistanceKm = totalDistanceMeters / 1000
+                            val totalDurationMinutes = totalDurationSeconds / 60
 
-                        // Convert distance to kilometers and duration to minutes
-                        val totalDistanceKm = totalDistanceMeters / 1000
-                        val totalDurationMinutes = totalDurationSeconds / 60
+                            // Update the TextViews with distance and time
+                            routeDistanceTextView.text = "Distance: %.2f km".format(totalDistanceKm)
+                            routeTimeTextView.text = "Time: %.0f min".format(totalDurationMinutes)
+                        }
+                        if(model.usersList.find { it.username==model.loggedInUser}!!.unit=="imperial"){
+                            Log.i("Unit",model.usersList.find { it.username==model.loggedInUser}!!.unit.toString())
+                            val totalDistanceKm = totalDistanceMeters / 1609
+                            val totalDurationMinutes = totalDurationSeconds / 60
 
-                        // Update the TextViews with distance and time
-                        routeDistanceTextView.text = "Distance: %.2f km".format(totalDistanceKm)
-                        routeTimeTextView.text = "Time: %.0f min".format(totalDurationMinutes)
-
+                            // Update the TextViews with distance and time
+                            routeDistanceTextView.text = "Distance: %.2f miles".format(totalDistanceKm)
+                            routeTimeTextView.text = "Time: %.0f min".format(totalDurationMinutes)
+                        }
                         // Show the small box
                         directionInfoCard.visibility = View.VISIBLE
                     }

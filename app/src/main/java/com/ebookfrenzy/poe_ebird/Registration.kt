@@ -45,6 +45,7 @@ class Registration : AppCompatActivity() {
     fun store(username:String,name:String,surname:String,email:String,password:String) {
         model.usersList.add(Users(username,name,surname,email,null,null,password))
         Toast.makeText(this, "$username successfully registered", Toast.LENGTH_SHORT).show()
+        saveModelDataToFirestore(model)
 
     }
     private fun validateInputs() {

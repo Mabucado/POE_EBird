@@ -69,6 +69,7 @@ class Feedbacks : Fragment() {
                 Feedback(1,mes,of,mot,imp,currentDate,model.loggedInUser!! )
             )
             Toast.makeText(requireContext(), "Feedback submitted", Toast.LENGTH_SHORT).show()
+            saveModelDataToFirestore(model)
         }
 
     }
