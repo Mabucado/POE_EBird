@@ -42,7 +42,7 @@ class Observations : Fragment() {
     lateinit var imageView:ImageView
     lateinit var name:TextView
     lateinit var location:TextView
-    private val API_KEY = "AIzaSyAaJfQ1Wx9zaz8TFmb71y40ux26LWRfltg"  // Replace with your Google Places API key
+    private val API_KEY = "your_secret_key"  // Replace with your Google Places API key
     private val BASE_URL = "https://maps.googleapis.com/maps/api/"
     val model = globalModel
     private lateinit var recyclerView: RecyclerView
